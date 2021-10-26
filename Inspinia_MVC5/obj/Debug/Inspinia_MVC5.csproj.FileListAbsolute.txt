@@ -1,0 +1,115 @@
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Inspinia_MVC5.dll.config
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Inspinia_MVC5.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Inspinia_MVC5.pdb
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Antlr3.Runtime.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\EntityFramework.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\EntityFramework.SqlServer.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Newtonsoft.Json.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Helpers.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Mvc.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Optimization.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Razor.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.Razor.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\WebGrease.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Antlr3.Runtime.pdb
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\EntityFramework.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\EntityFramework.SqlServer.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\Newtonsoft.Json.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Helpers.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Mvc.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Optimization.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.Razor.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\System.Web.WebPages.Razor.xml
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\pl\System.Web.Optimization.resources.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\bin\pl\System.Web.Razor.resources.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csprojAssemblyReference.cache
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CoreCompileInputs.cache
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CopyComplete
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.dll
+C:\Users\reinaldo\Downloads\inspinia-master\inspinia-master\ASPNET_MVC5_Full_Version\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.pdb
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Inspinia_MVC5.dll.config
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Inspinia_MVC5.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Inspinia_MVC5.pdb
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Antlr3.Runtime.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\EntityFramework.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\EntityFramework.SqlServer.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Newtonsoft.Json.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Helpers.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Mvc.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Optimization.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Razor.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.Razor.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\WebGrease.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Antlr3.Runtime.pdb
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\EntityFramework.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\EntityFramework.SqlServer.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Newtonsoft.Json.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Helpers.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Mvc.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Optimization.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.Razor.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\System.Web.WebPages.Razor.xml
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\pl\System.Web.Optimization.resources.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\pl\System.Web.Razor.resources.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csprojAssemblyReference.cache
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CoreCompileInputs.cache
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CopyComplete
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.pdb
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Dapper.dll
+D:\PROJETOS WEB\TASKS\Inspinia_MVC5\bin\Dapper.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Inspinia_MVC5.dll.config
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Inspinia_MVC5.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Inspinia_MVC5.pdb
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Antlr3.Runtime.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Dapper.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\EntityFramework.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\EntityFramework.SqlServer.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Security.Cookies.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Security.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Web.Infrastructure.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Newtonsoft.Json.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Owin.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Helpers.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Mvc.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Optimization.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Razor.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.Razor.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\WebGrease.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Antlr3.Runtime.pdb
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Dapper.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\EntityFramework.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\EntityFramework.SqlServer.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Security.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Microsoft.Owin.Security.Cookies.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\Newtonsoft.Json.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Helpers.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Mvc.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Optimization.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.Razor.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.Deployment.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\System.Web.WebPages.Razor.xml
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\pl\System.Web.Optimization.resources.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\bin\pl\System.Web.Razor.resources.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CoreCompileInputs.cache
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csproj.CopyComplete
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.dll
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.pdb
+D:\PROJETOS WEB\TASKS\TAREFAS_TASK\Inspinia_MVC5\obj\Debug\Inspinia_MVC5.csprojAssemblyReference.cache

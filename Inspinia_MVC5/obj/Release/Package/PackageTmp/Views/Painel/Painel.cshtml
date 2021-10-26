@@ -1,0 +1,132 @@
+﻿
+@{ ViewBag.Title = "1"; }
+<form id="form_painel">
+
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>T A S K S</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Dashboard_1", "Dashboards")">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Painel</a>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+    <br />
+    <p>    <button type="button" class="btn btn-primary" id="btn-add-painel" role="button"> + Criar um novo modulo</button></p>
+
+    <div class="row border-bottom white-bg dashboard-header" id="painel_id">
+
+        @{
+            foreach (var item in (List<Inspinia_MVC5.Models.Modulo_Model>)ViewBag.ListaModulo)
+            //foreach (var item in ViewBag.ListaModulo)
+            {
+                <div class="col-md-2">
+                    <div class="jumbotron" id="Modulo_" @item.Mod_id.ToString()>
+
+                        <a style="text-decoration:none"><h2 style="margin-top:10px; cursor:pointer" class="painel btn-block" name="@item.Mod_Descricao.ToString()" id="@item.Mod_id.ToString()">@item.Mod_Descricao.ToString()</h2></a>
+                        <div class="stat-percent font-bold text-navy"><i class="fa fa-list"></i> @item.T_Tarefas.ToString() </div>
+                        <input type="hidden" id="mod_id"/>
+
+                    </div>
+                </div>
+            }
+        }
+
+
+    </div>
+</form>
+
+
+<script src="~/Scripts/Rotina_Basica.js"></script>
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //anulando o submit
+            $("#form_painel").submit(function (e) {
+                e.preventDefault();
+            });
+
+            var cont = 0;
+            //add novos modulos
+            $("#btn-add-painel").click(function () {
+                cont++;
+                var $divContainer = $('#painel_id');
+                $divContainer.append(
+                    '<div class="col-md-2" id="Modulo_New' + cont + '">'+
+                        '<div class="jumbotron" id="jumbotron' + cont + '">'+
+                            '<div class="form-group row has-success", id="panel_sub' + cont + '">' +
+                            '<small>Digite o nome do modulo</small>'+
+                                '<input type="text" class="edit form-control" name ="edit_Modulo" id="edit_Modulo">' +
+                             '</div>' +
+                        '</div>'+
+                    '</div>')
+                $('#edit_Modulo').focus();
+            });
+
+            //salvado no banco o novo modulo
+            $("form").on("change", ".edit", function () {
+
+                var mod_descricao = $('#edit_Modulo').val();
+
+                modulo = { Mod_descricao: mod_descricao }
+                preLoad();
+                $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ modulo }),
+                url: '@Url.Action("CadastrarModulo", "Painel")',
+                success: function (data) {
+                    if (data.erro) {
+                        posLoad();
+                        Notiflix.Notify.Failure('Houve um falha');
+                    } else {
+                        posLoad();
+                        Notiflix.Notify.Success('Modulo cadastrado com sucesso!');
+                        //removendo
+                        $('#panel_sub' + cont).remove();
+                        //add
+                        $("#jumbotron" + cont).append('<a style="text-decoration:none"><h2 style="margin-top:10px; cursor:pointer" name="' + mod_descricao + '" class="painel btn-block" id="' + data.Mod_Id + '">' + mod_descricao + '</h2></a>' +
+                            '<div class="stat-percent font-bold text-navy"><i class="fa fa-list"></i> 0 </div>');
+                    }
+                },
+                    error: function () {
+                        posLoad();
+                        Notiflix.Notify.Failure('Houve um falha');
+                    }
+                });
+
+            });
+
+            //click para abrir as tareas do modulo
+            $("form").on("click", ".painel", function () {
+                var modulo_id = $(this).attr("id");
+                var modulo_nome = $(this).attr("name");
+                preLoad();
+                location.href = '@Url.Action("Demandas", "Demandas")?id=' + modulo_id + '&nome=' + modulo_nome;
+            
+            });
+
+            //Limpandao caso o campo esteja em branco
+            $("form").on("blur", "#edit_Modulo", function (e) {
+
+                var value = $('#edit_Modulo').val();
+                if (value.length === 0 || !value.trim()) {
+                    $("#Modulo_New" + cont).remove();
+                }
+            });
+
+        });
+
+
+
+
+    </script>
+}

@@ -1,0 +1,15 @@
+﻿<!--Checklist-->
+<div id="div_chk_item">
+    <div id="add_remover_checkbox">
+        @{
+            foreach (var item in ViewBag.checkListItem)
+            {
+                <div>
+                    <input type="checkbox" value="option3" class="class_checklisitem form-group" name="@item.Check_Item_Descricao" id="@item.Check_Item_id" @item.Check_Item_ted>  @item.Check_Item_Descricao<small class="float-right"><i class="class_checklisitem_del  fa fa-trash" id=@item.Check_Item_id style="cursor:pointer"></i></small>
+                </div>
+
+            }
+        }
+    </div>
+</div>
+

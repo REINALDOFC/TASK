@@ -1,0 +1,705 @@
+﻿@model Inspinia_MVC5.Models.TarefaViewModel
+<div class="form-group">
+    <div class="row">
+        <!-- Formulario-->
+        <div class="col-md-10">
+            <br />
+
+
+            @using (Html.BeginForm("SalvarTarefa", "Demandas", FormMethod.Post, new { id = "formTarefa" }))
+            {
+                <div id="Div_NumeroDemanda">
+                    @Html.Partial("_NumeroDemana")
+                </div>
+
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.Demandas_M.Tar_Titulo, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Demandas_M.Tar_Titulo, new { htmlAttributes = new { @class = "form-control", required = true, name = "Tar_Titulo", id = "Tar_Titulo" } })
+
+                <p></p>
+                @Html.LabelFor(model => model.Demandas_M.Tar_Descricao, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Demandas_M.Tar_Descricao, new { @class = "form-control", name = "Tar_Descricao", @id = "Tar_Descricao", Style = "height: 250px;", required = true })
+
+                @Html.HiddenFor(model => model.Demandas_M.Tar_Nivel, htmlAttributes: new { @class = "control-label", id = "Tar_Nivel" })
+                @Html.HiddenFor(model => model.Demandas_M.Tar_NSolicitacao, htmlAttributes: new { @class = "control-label", id = "Tar_NSolicitacao" })
+
+                @Html.HiddenFor(model => model.Demandas_M.Tar_Id, htmlAttributes: new { @class = "control-label", id = "Tar_Id"  })
+                @Html.HiddenFor(model => model.Demandas_M.Tar_DTPrazo, htmlAttributes: new { @class = "control-label", id = "Tar_DTPrazo_hidden" })
+                @Html.HiddenFor(model => model.Demandas_M.Tar_Mod_Id, htmlAttributes: new { @class = "control-label", @id = "Tar_Mod_Id", name = "Tar_Mod_Id" })
+
+                <br />
+                <div class="row">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-primary btn btn-outline" id="btnSalvarTarefa">Salvar</button>
+                    </div>
+                    <div class="col-10 text-right">
+                        <button type="button" class="btn btn-success btn btn-outline" id="btnNovo">Novo</button>
+                        <button data-toggle="button" class="btn btn-danger btn btn-outline" type="button" id="btnSair"> <i class="fa fa-sign-out"> </i>  Sair </button>
+
+                    </div>
+
+                </div>
+
+                <br />
+                <br />
+
+                <!--CHECKLIST-->
+                <div id="Div_CheckList">
+                    @Html.Partial("_Checklist")
+                </div>
+
+                <!--CHECKLIST_ITEM-->
+                <div id="Div_CheckList_Item">
+                    @Html.Partial("_Checklist_Item")
+                </div>
+            }
+            <div id="div_EditChecklist" style="display:none">
+                @Html.EditorFor(model => model.CheckList_M.Check_Item_Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Descreva o item do checklist", id = "Check_Item_Descricao", name = "Check_Item_Descricao" } })
+                <br />
+            </div>
+
+            <!--BOTÃO ADD ITEM-->
+            <div id="div_btn_add_item" style="display:none">
+                <button type="button" class="btn btn-primary btn-xs btn-outline" id="btn_add_item">+ Adicionar um item</button>
+                <br />
+                <br />
+            </div>
+
+            <!--ATIVIDADE-->
+            <br />
+            <h3><i class="fa fa-edit"></i>Atividades</h3>
+
+            @Html.EditorFor(model => model.Atividade_M.HisAti_Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Descreva suas atividade", id = "HisAti_Descricao", name = "HisAti_Descricao" } })
+            <br />
+           
+
+            <div id="Div_HistoricoAtividade">
+                @Html.Partial("_HistoricoAtividade")
+            </div>
+        </div>
+
+
+        <!-- Menu-->
+
+        <div class="col-md-2" id="div_acao">
+            <br />
+            <form id="forms" name="forms" action="" method="post" enctype="multipart/form-data">
+                <h4><i class="fa fa-plus-square" id="divUsuarioLista"></i> Adicionar a Tarefa</h4>
+                <div class="btn-group col-md-12 m-0 p-0">
+                    <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-user"> </i>  Usuário </button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div id="divUsuarioLista">
+                        @Html.Partial("_UsuarioLista")
+                    </div>
+                </div>
+                <br />
+                <br />
+                <button data-toggle="button" class="btn btn-primary  btn-block" type="button" id="btnCheckList" name="btnCheckList"><i class="fa fa-check"> </i>  Checklist </button>
+                <br />
+                <input type="file" name="fileAnexo" id="fileAnexo" accept=".jpeg, .jpg, .png, .pdf, .doc .xls" style="display:none" multiple>
+                <button data-toggle="button" class="btn btn-primary  btn-block" type="button" id="btnAnexo"> <i class="fa fa-paperclip"> </i>  Anexo </button>
+                <input type="hidden" id="NumeroSS" name="NumeroSS" />
+                <br />
+
+                <h4><i class="fa fa-calendar"></i> Prazo</h4>
+                <div class="input-group date text-center">
+                    <input class="btn btn-success  btn-block" id="Tar_DTPrazo" name="Tar_DTPrazo" type="date">
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <h4><i class="fa fa-clock-o"></i> Tarefa urgente? </h4>
+                  
+                        <div class="switch" style=" padding-left:10px; padding-top:3px;">
+                            <div class="onoffswitch">
+
+                                <input type="checkbox" class="onoffswitch-checkbox" id="onoff1" name="onoff1"  >
+                                <label class="onoffswitch-label" for="onoff1">
+
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                  
+                </div>
+
+
+                <br />
+                <br />
+                <h4><i class="fa fa-flash"></i>Ações</h4>
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <button class="btn btn btn-circle" type="button" id="btn_tarefa" onclick="Movimentacao('Tarefas')">
+                            <i class="fa fa-list"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-circle" type="button" id="btn_desenvolvimento" onclick="Movimentacao('Desenvolvimento')">
+                            <i class="fa fa-bolt"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-circle" type="button" id="btn_homologacao" onclick="Movimentacao('Homologacao')">
+                            <i class="fa fa-bug"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-circle" type="button" id="btn_pendente" onclick="Movimentacao('Pendente')">
+                            <i class="fa fa-exclamation"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-secondary btn-circle" type="button" onclick="Movimentacao('Finalizado')">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <br />
+
+
+                <h4><i class="fa fa-user-circle"></i> Participantes</h4>
+                <div id="divListaUsuarioTarefa">
+                    @Html.Partial("_Usuario")
+                </div>
+                <br />
+
+                <!--Anexo-->
+                <h4><i class="fa fa-clipboard"></i> Anexo</h4>
+                <div id="div_anexo_tarefa">
+                    @Html.Partial("_Anexo")
+                </div>
+                <br />
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/touchPunch")
+    @Scripts.Render("~/plugins/typehead")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/plugins/summernote")
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+
+    document.getElementById("onoff1").checked = parseInt($("#Tar_Nivel").val());
+    $("#Tar_DTPrazo").val($("#Tar_DTPrazo_hidden").val());
+
+        if ($("#Check_id").val() != undefined) {
+            $("#div_btn_add_item").css("display", "block");
+        }
+
+        if ($('#Tar_NSolicitacao').val() == "") {
+            $('#Tar_Titulo').focus();
+            $('#Tar_Titulo').val("")
+           // $('input').not('.noclear').val('');
+            $('textarea').not('.noclear').val('');
+            $('#add_remover_atividade').remove();
+            $('#dd_ListaUsuario_tarefa').remove();
+            $('#ul_anexo').remove();
+            $('#id_NumeroDemana').remove();
+            $('#div_acao *').prop('disabled', true);
+            $('#HisAti_Descricao').prop('disabled', true);
+
+        } else {
+            $('#id_NumeroDemana').remove();
+
+        }
+
+    function Cadastro_load() {
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val() }),
+            url: '@Url.Action("CadastroTarefaParcial", "Demandas")',
+
+            success: function (result) {
+                $('#Div_NumeroDemanda').html(result);
+                $('#div_acao *').prop('disabled', false);
+                $('#HisAti_Descricao').prop('disabled', false);
+                $('#HisAti_Descricao').focus();
+            }
+        });
+    }
+    function Checklist_load() {
+
+            $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("CheckListParcial", "Demandas")',
+
+            success: function (result) {
+                $('#Div_CheckList').html(result);
+                $("#div_EditChecklist").css("display", "block");
+                $('#Check_Item_Descricao').focus();
+            }
+        });
+    }
+    function Checklist_Item_load() {
+
+            $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("CheckList_Item_Parcial", "Demandas")',
+
+            success: function (result) {
+                $('#Div_CheckList_Item').html(result);
+                $("#div_EditChecklist").css("display", "none");
+                $("#div_btn_add_item").css("display", "block");
+                $('#Check_Item_Descricao').val("");
+            }
+        });
+    }
+    function Checklist_Delete_load() {
+
+        $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+        url: '@Url.Action("CheckListParcial", "Demandas")',
+
+        success: function (result) {
+            $('#Div_CheckList').html(result);
+        }
+    });
+    }
+    function Checklist_Item_Delete_load() {
+
+            $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("CheckList_Item_Parcial", "Demandas")',
+
+            success: function (result) {
+                $('#Div_CheckList_Item').html(result);
+                $("#div_btn_add_item").css("display", "none")
+            }
+        });
+    }
+    function Atividade_load() {
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("HistoricoAtividadeParcial", "Demandas")',
+
+            success: function (result) {
+                    $('#Div_HistoricoAtividade').html(result);
+                    $('#HisAti_Descricao').val('');
+                    $('#HisAti_Descricao').focus();
+            }
+        });
+    }
+    function Anexo_load() {
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("AnexoParcial", "Demandas")',
+
+            success: function (result) {
+                $('#div_anexo_tarefa').html(result);
+            }
+        });
+    }
+    function UsuarioLista_load() {
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+                url: '@Url.Action("UsuarioListaParcial", "Demandas")',
+
+                success: function (result) {
+                    $('#divUsuarioLista').html(result);
+
+                }
+            });
+        }
+    function UsuarioParticipant_load() {
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Tar_NSolicitacao').val()}),
+            url: '@Url.Action("UsuarioParticipanteParcial", "Demandas")',
+
+            success: function (result) {
+                $('#divListaUsuarioTarefa').html(result);
+            }
+        });
+    }
+    function Func_Crud(url, modulo) {
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ modulo }),
+                url: url,
+                success: function (data) {
+                    if (data.erro) {
+                        posLoad();
+                        Notiflix.Notify.Failure('Houve um falha');
+                    } else {
+
+                    }
+                },
+                error: function () {
+
+                    Notiflix.Notify.Failure('Houve um falha')
+                }
+            });
+    }
+    function Movimentacao(id) {
+
+        var tar_NSolicitacao = $("#Tar_NSolicitacao").val();
+
+        if ($('#Total_Checked').val() != '100%' && id == "Finalizado") {
+
+            Notiflix.Notify.Warning('Finalize todos o checklist');
+            return false;
+        } else {
+
+            Func_Crud('@Url.Action("Movimentacao", "Demandas")', Modulo = { Tar_NSolicitacao: tar_NSolicitacao, Coluna: id });
+            Notiflix.Notify.Success('Operação realizada sucesso!');
+        }
+
+    }
+
+    // TAREFA
+    // Salvador tarefa
+    $('#btnSalvarTarefa').click(function () {
+
+    $("#formTarefa").validate();
+    var formulario = $("#formTarefa");
+
+    if (formulario.valid()) {
+        var url = formulario.prop("action");
+        var metodo = formulario.prop("method");
+        var dadosFormulario = formulario.serialize();
+
+        preLoad();
+        $.ajax({
+            url: url,
+            method: metodo,
+            data: dadosFormulario,
+            success: function (data) {
+                if (data.erro) {
+                    posLoad();
+                    Notiflix.Notify.Failure('Erro ao processar');
+                } else {
+                    posLoad();
+                    Notiflix.Notify.Success('Dados salvos com sucesso');
+
+                    //Preenchendo os campo referencia
+                    $('#Tar_NSolicitacao').val(data.tar_NSolicitacao);
+                    $('#Tar_Id').val(data.tar_id);
+                    Cadastro_load();
+                    UsuarioLista_load();
+                    UsuarioParticipant_load();
+
+                }
+            }
+        });
+    }
+    });
+
+    $('#btnNovo').click(function () {
+
+        var Mod_Id = $('#Tar_Mod_Id').val();
+        window.location.href = '@Url.Action("CadastrarTarefas", "Demandas")?id=0&Mod_id=' + Mod_Id;
+        $('#Tar_Titulo').focus();
+    })
+    $('#btnSair').click(function () {
+        window.location.href = '@Url.Action("painel", "painel")';
+
+    })
+
+    //Salvar Atividades
+    $("#HisAti_Descricao").on('keypress', function (e) {
+        if (e.which == 13) {
+            var hisAti_Descricao = $('#HisAti_Descricao').val();
+            var tar_Id = $('#Tar_Id').val();
+            Modulo = { HisAti_Descricao: hisAti_Descricao, HisAti_Tar_Id: tar_Id }
+
+             $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ Modulo }),
+                    url: '@Url.Action("SalvarAtividade", "Demandas")',
+                    success: function (data) {
+                        if (data.erro) {
+                            Notiflix.Notify.Failure('Houve um falha');
+                        } else {
+                            Notiflix.Notify.Success('Operação realizada sucesso!');
+                            Atividade_load();
+                        }
+                    },
+                    error: function () {
+                        Notiflix.Notify.Failure('Houve um falha')
+                    }
+             });
+
+        }
+    })
+
+    //Botão Add CheckList
+    $('#btnCheckList').click(function () {
+
+        var check_Tar_id = $('#Tar_Id').val();
+        var check_Descricao = $('#check_Descricao').val();
+        Modulo = { Check_Tar_id: check_Tar_id, Check_Descricao: "Checklista" };
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ Modulo }),
+            url: '@Url.Action("AddCheckList", "Demandas")',
+            success: function (data) {
+                if (data.erro) {
+                    Notiflix.Notify.Failure('Houve um falhas');
+                } else {
+                    Notiflix.Notify.Success('Operação realizada sucesso!');
+                    Checklist_load();
+                }
+            },
+            error: function () {
+                Notiflix.Notify.Failure('Houve um falha')
+            }
+        });
+
+
+    })
+
+    //Enter do Edit do item checklist
+    $("#Check_Item_Descricao").on('keypress', function (e) {
+        if (e.which == 13) {
+            var check_Item_Descricao = $("#Check_Item_Descricao").val();
+            var check_Tar_id = $("#Tar_Id").val();
+
+            Modulo = { Check_Tar_id: check_Tar_id, Check_Item_Descricao: check_Item_Descricao }
+
+            if (check_Item_Descricao !== "") {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ Modulo }),
+                    url: '@Url.Action("Add_ItemCheckList", "Demandas")',
+                    success: function (data) {
+                        if (data.erro) {
+                            Notiflix.Notify.Failure('Houve um falha');
+                        } else {
+                            Notiflix.Notify.Success('Operação realizada sucesso!');
+                            Checklist_Item_load();
+                            Checklist_Delete_load();
+                        }
+                    },
+                    error: function () {
+                        Notiflix.Notify.Failure('Houve um falha')
+                    }
+                });
+            }
+        }
+    })
+
+    //Exit do edit item , limpando
+    $("#Check_Item_Descricao").blur(function () {
+        $("#div_EditChecklist").css("display", "none");
+        $("#div_btn_add_item").css("display", "block");
+    })
+
+    //Click do Botão ADD ITEM Checklist
+    $("#btn_add_item").click(function () {
+        $("#div_EditChecklist").css("display", "block");
+        $("#div_btn_add_item").css("display", "none");
+        $('#Check_Item_Descricao').val("");
+        $('#Check_Item_Descricao').focus();
+    })
+
+    //Delete Checklist
+    $("form").on("click", ".class_checklist_del", function () {
+        check_Tar_id = $('#Tar_Id').val();
+
+       Modulo = { Check_Tar_id: check_Tar_id };
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ Modulo }),
+            url: '@Url.Action("DeleteCheckList", "Demandas")',
+            success: function (data) {
+                if (data.erro) {
+                    Notiflix.Notify.Failure('Houve um falha');
+                } else {
+                    Notiflix.Notify.Success('Operação realizada com sucesso!');
+                    Checklist_Delete_load()
+                    Checklist_Item_Delete_load()
+
+
+
+                }
+            },
+            error: function () {
+                Notiflix.Notify.Failure('Houve um falha');
+            }
+        });
+
+
+    });
+
+    // Delete itens do checklist
+    $("form").on("click", ".class_checklisitem_del", function () {
+
+        var check_Item_id = $(this).attr("id");
+        var check_Tar_id = $("#Tar_Id").val();
+        Modulo = { Check_Item_id: check_Item_id, Check_Tar_id: check_Tar_id};
+
+        $.ajax({
+            url: '@Url.Action("DeleteItemCheckList", "Demandas")',
+            method: "POST",
+            data: Modulo,
+            success: function (data) {
+                if (data.erro) {
+                    Notiflix.Notify.Failure('Erro ao processar');
+                } else {
+                    Notiflix.Notify.Success('Dados salvos com sucesso');
+                    Checklist_Delete_load()
+                    Checklist_Item_load()
+
+                }
+            }
+        });
+
+    });
+
+    //#checkListaItem marca e desmarca
+    $("form").on("click", ".class_checklisitem", function () {
+
+        var check_Item_id = $(this).attr("id");
+        var check_Item_ted = document.getElementById(check_Item_id).checked;
+        var check_Tar_id = $('#Tar_Id').val();
+
+        Modulo = { Check_Item_id: check_Item_id, Check_Item_ted: check_Item_ted, Check_Tar_id:check_Tar_id }
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ Modulo }),
+            url: '@Url.Action("Checkted", "Demandas")',
+            success: function (data) {
+                if (data.erro) {
+                    Notiflix.Notify.Failure('Houve um falha');
+                } else {
+
+                    Checklist_Delete_load();
+                }
+            },
+            error: function () {
+                Notiflix.Notify.Failure('Houve um falha');
+            }
+        });
+
+    });
+
+
+    //Add usaurio
+    $("form").on("click", ".dropdown", function () {
+        var usu_Nome = $(this).attr("id");
+        var usuTar_Tar_id = $('#Tar_Id').val();
+        Func_Crud('@Url.Action("AddUsuario", "Demandas")', Modulo = { UsuTar_Tar_id: usuTar_Tar_id, Usu_Nome: usu_Nome });
+        UsuarioLista_load();
+        UsuarioParticipant_load();
+    });
+
+
+    //Urgente?
+    $('#onoff1').on('change', function () {
+        var el = this;
+        var urgente = el.checked ? '1' : '0'
+        $('#Tar_Nivel').val(urgente)
+        tar_id = $('#Tar_Id').val();
+        Func_Crud('@Url.Action("AtualizarNivel", "Demandas")', Modulo = { Tar_Id: tar_id, Tar_Nivel: urgente });
+
+    });
+
+    //anexo
+    $('#btnAnexo').click(function () {
+        $('#fileAnexo').click();
+    });
+
+    $('#fileAnexo').on('change', function () {
+       $("#NumeroSS").val($("#Tar_NSolicitacao").val())
+        //anexo
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AnexarDocumento", "Demandas")',
+            dataType: "json",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: new FormData($("#forms")[0]),
+            success: function (data) {
+                Anexo_load();
+
+            },
+            error: function () {
+                Notiflix.Notify.Failure('Houve um falha');
+            }
+        });
+    })
+
+    $("form").on("click", ".class_anexo_del", function () {
+
+        var ane_id = $(this).attr("id");
+        Modulo = { Ane_id: ane_id};
+
+        $.ajax({
+            url: '@Url.Action("DeleteAnexo", "Demandas")',
+            method: "POST",
+            data: Modulo,
+            success: function (data) {
+                if (data.erro) {
+                    Notiflix.Notify.Failure('Erro ao processar');
+                } else {
+                    Notiflix.Notify.Success('anexo excluido com sucesso');
+                    Anexo_load();
+
+                }
+            }
+        });
+
+    });
+
+
+    //Atualizando Prazo
+    $('#Tar_DTPrazo').on('change', function () {
+        tar_id = $('#Tar_Id').val();
+        tar_DTPrazo = $('#Tar_DTPrazo').val();
+        Func_Crud('@Url.Action("AtualizarPrazo", "Demandas")', Modulo = { Tar_Id: tar_id, Tar_DTPrazo: tar_DTPrazo });
+
+    });
+
+
+</script>

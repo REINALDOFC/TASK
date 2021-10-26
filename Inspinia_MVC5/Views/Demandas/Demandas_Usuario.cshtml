@@ -1,0 +1,191 @@
+﻿@model Inspinia_MVC5.Models.TarefaViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@{ var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+
+    var foto = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Actor).Value;
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Lista de tarefas por usuário</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")">Painel</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Tarefas do Usuário</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="m-b-md">
+                                @*<a href="#" class="btn btn-white btn-xs float-right">Editar Projeto</a>*@
+                                <h2>@Model.Usuario_M.Usu_Nome</h2>
+                                <input type="hidden" id="Usu_Nome" value="@Model.Usuario_M.Usu_Nome"/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1">
+
+                            <div class="dropdown profile-element" style="padding-left:30px">
+                                <img alt="image" class="rounded-circle" style="width: 80px;height: 80px" src="~/Images/@Model.Usuario_M.Usu_Foto" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-11">
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right"><dt>Status:</dt> </div>
+                                <div class="col-sm-5 text-sm-left"><dd class="mb-1"><span class="label label-primary">Ativo</span></dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right"><dt>Data de Cadastro:</dt> </div>
+                                <div class="col-sm-5 text-sm-left"><dd class="mb-1">@Model.Usuario_M.Usu_Dt_Cadastro</dd> </div>
+                            </dl>
+
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right"><dt>E-mail:</dt> </div>
+                                <div class="col-sm-5 text-sm-left"> <dd class="mb-1"><a href="#" class="text-navy">@Model.Usuario_M.Usu_Email</a> </dd></div>
+                                
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right"> <dt>Nível:</dt></div>
+                                <div class="col-sm-5 text-sm-left"> <dd class="mb-1"> @Model.Usuario_M.Usu_Nivel_id </dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right"> <dt><dt>completado:</dt></div>
+                                <div class="col-sm-10 text-sm-left">
+                                    <dd class="mb-2">
+                                        <div class="progress m-b-2">
+                                            <div style="width: @Model.Modulo_M.Total_Checked;" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                                        </div>
+                                        <small>Andamento de todas as suas tarefas: <strong>@Model.Modulo_M.Total_Checked</strong> </small>
+                                    </dd>
+                                </div>
+                            </dl>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row m-t-sm">
+                        <div class="col-lg-12">
+                            <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li><a class="nav-link active" href="#tab-1" data-toggle="tab">Lista de Tarefas</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab-1">
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ficha</th>
+                                                        <th>Modulo</th>
+                                                        <th>Status</th>
+                                                        <th>Título</th>
+                                                        <th>Começo</th>
+                                                        <th>Fim</th>
+                                                        <th>Total de Itens feitos</th>
+                                                        <th>Participantes</th>
+                                                        <th>Ultimo comentário</th>
+                                                        <th>Disvincular</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tboby_demanda_usuarios">
+                                                    @Html.Partial("_demandas_usuario")
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function Demandausuario_load() {
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ id: $('#Usu_Nome').val() }),
+            url: '@Url.Action("DemandausuarioParcial", "Demandas")',
+
+            success: function (result) {
+                $('#tboby_demanda_usuarios').html(result);
+            }
+        });
+    }
+     
+ 
+
+    function Func_Desvincular(usuTar_Tar_id, usuTar_Usu_id ) {
+
+        event.preventDefault();
+
+        Notiflix.Confirm.Show('Confirmação', 'Deseja disvincular esse usuario da tarefa?', 'Sim', 'Não', function ()
+        {
+           modulo = { UsuTar_Tar_id: usuTar_Tar_id, UsuTar_Usu_id: usuTar_Usu_id }
+
+           $.ajax({
+               type: "POST",
+               contentType: "application/json; charset=utf-8",
+               data: JSON.stringify({ modulo }),
+               url: '@Url.Action("Disvincular", "Demandas")',
+               success: function (data) {
+                   if (data.erro) {
+                        Notiflix.Notify.Failure('Houve um falha');
+                   } else {
+                       Notiflix.Notify.Success('Modulo cadastrado com sucesso!');
+                       Demandausuario_load();
+                   }
+               },
+               error: function () {
+                    Notiflix.Notify.Failure('Houve um falha');
+               }
+           });
+
+        },
+        function () {});
+
+
+    }
+
+
+</script>

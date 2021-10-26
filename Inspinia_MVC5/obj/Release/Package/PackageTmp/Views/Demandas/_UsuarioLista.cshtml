@@ -1,0 +1,6 @@
+﻿<div class="dropdown-menu" aria-labelledby="dropdownMenuReference" style="min-width:211px">
+     @foreach (var item in ViewBag.usuariolista)
+      {
+        <a class="dropdown dropdown-item" href="#" id="@item.Usu_Nome"><img alt="image" class="rounded-circle" src="~/Images/@item.Usu_Foto" style="width:12%; height:12%"> @item.Usu_Nome </a>
+      }
+</div>

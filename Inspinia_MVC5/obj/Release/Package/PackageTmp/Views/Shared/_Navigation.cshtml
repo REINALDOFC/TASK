@@ -1,0 +1,64 @@
+﻿@{
+    var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+    var foto = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Actor).Value;
+    var Role = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.Role).Value;
+
+}
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" style="text-align: center ;padding-right:20px">
+                    <img alt="image" class="rounded-circle" style="width: 80px;height: 80px" src="~/Images/@foto" />
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        @{ if (@User.Identity.Name != "")
+                            {
+                                <span class="block m-t-xs font-bold"> @User.Identity.Name</span>
+                            }
+                        }
+
+                    </a>
+                </div>
+                <div class="logo-element">
+                    TASKS
+                </div>
+            </li>
+            <li>
+
+                <a href="@Url.Action("projetos", "projeto")"><i class="fa fa-th"></i> <span class="nav-label" data-i18n="nav.layouts">Acompanhar Projetos</span> </a>
+
+            </li>
+            @*@{
+                if (Role == "ADM")
+                {
+                    <li>
+
+                        <a href="@Url.Action("projetos", "projeto")"><i class="fa fa-th"></i> <span class="nav-label" data-i18n="nav.layouts">Acompanhar Projetos</span> </a>
+
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("painel", "painel")"><i class="fa fa-th-list"></i> <span class="nav-label" data-i18n="nav.layouts">Projetos/Fichas</span> </a>
+                    </li>
+                }
+            }*@
+
+
+            @*<li class="@Html.IsSelected(controller: "Dashboards")">
+            <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Dashboards</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Dashboards", cssClass: "in")">
+                <li class="@Html.IsSelected(action: "Dashboard_1")"><a href="@Url.Action("Dashboard_1", "Dashboards")">Dashboard v.1</a></li>
+                <li class="@Html.IsSelected(action: "Dashboard_2")"><a href="@Url.Action("Dashboard_2", "Dashboards")">Dashboard v.2</a></li>
+                <li class="@Html.IsSelected(action: "Dashboard_3")"><a href="@Url.Action("Dashboard_3", "Dashboards")">Dashboard v.3</a></li>
+                <li class="@Html.IsSelected(action: "Dashboard_4_1")"><a href="@Url.Action("Dashboard_4_1", "Dashboards")">Dashboard v.4</a></li>
+                <li class="@Html.IsSelected(action: "Dashboard_5")"><a href="@Url.Action("Dashboard_5", "Dashboards")">Dashboard v.5</a></li>
+            </ul>
+        </li>*@
+
+        </ul>
+    </div>
+</nav>

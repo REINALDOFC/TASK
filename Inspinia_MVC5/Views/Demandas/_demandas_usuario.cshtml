@@ -1,0 +1,59 @@
+﻿@{ foreach (var item in ViewBag.ListaTarefas)
+
+    {
+        <tr>
+            <td>
+                <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao" class="btn btn-xs btn-white">@item.Tar_NSolicitacao.ToString()</a>
+            </td>
+            <td>
+                @item.Tar_Mod_Descricao
+            </td>
+            <td>
+                @{
+                    if (item.Sta_Descricao == "Tarefas")
+                    {
+                        <span class="label label-inverse btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                    }
+                    else if (item.Sta_Descricao == "Desenvolvimento")
+                    {
+                        <span class="label label-primary btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                    }
+                    else if (item.Sta_Descricao == "Homologação")
+                    {
+                        <span class="label label-info btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                    }
+                    else if (item.Sta_Descricao == "Pendente")
+                    {
+                        <span class="label label-warning btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                    }
+                }
+
+            </td>
+            <td>
+                @item.Tar_Titulo
+            </td>
+            <td>
+                @item.Tar_DTCadastro
+            </td>
+            <td>
+                @item.Tar_DTPrazo
+            </td>
+            <td>
+                @item.CheckList_total
+            </td>
+            <td>
+                @{Html.RenderAction("_Usuario_participante", "Projeto", new { id = @item.Tar_Id });}
+            </td>
+            <td>
+                <p class="small">
+                    @item.UltimoComentario
+                </p>
+            </td>
+            <td class="text-center">
+                <a href="" onclick="Func_Desvincular(@item.Tar_Id, @Model.Usuario_M.UsuTar_Usu_id)" class="btn btn-xs btn-success"> - Disvincular</a>
+            </td>
+
+        </tr>
+
+    }
+}

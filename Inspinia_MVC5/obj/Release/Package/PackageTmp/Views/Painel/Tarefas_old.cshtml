@@ -1,0 +1,432 @@
+﻿
+@{ ViewBag.Title = "AgileBoard"; }
+<form id="form_painel" method="post">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>@ViewBag.NomeModulo</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Dashboard_1", "Dashboards")">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>Painel</a>
+                </li>
+                <li class="active breadcrumb-item">
+                    <strong>Tarefas</strong>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="ibox">
+                    <div class="ibox-content">
+
+                        <h3>Tarefas</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                        <div class="ibox-tools">
+                            @*<span class="label label-warning-light">10 Mensagen</span>*@
+                        </div>
+                        <ul class="sortable-list connectList agile-list" id="todo">
+                            <li class="warning-element" id="task1">
+                                <h4>Criação de relatório.</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2030</a>
+                                    <i class="fa fa-clock-o"></i> 12.10.2015
+                                </div>
+                            </li>
+                            <li class="success-element" id="task2">
+                                <h4>Erro na tela de cadastro de pessoa</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2130</a>
+                                    <i class="fa fa-clock-o"></i> 05.04.2015
+                                </div>
+                            </li>
+
+
+                            <li class="warning-element" id="task7">
+                                <h4>Criação de relatório.</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2030</a>
+                                    <i class="fa fa-clock-o"></i> 12.10.2015
+                                </div>
+                            </li>
+                            <li class="success-element" id="task8">
+                                <h4>Erro na tela pessoa</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2130</a>
+                                    <i class="fa fa-clock-o"></i> 05.04.2015
+                                </div>
+                            </li>
+
+                        </ul>
+                        <br />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-white" id="btn_add_tarefa"><i class="fa fa-plus"></i> Nova Tarefa</button>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>Em Desenvolvimento</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                        <div class="ibox-tools">
+                            @*<span class="label label-warning-light">10 Mensagen</span>*@
+                        </div>
+                        <ul class="sortable-list connectList agile-list" id="inprogress">
+                            <li class="warning-element" id="task3">
+                                <h4>Criação de relatório.</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2030</a>
+                                    <i class="fa fa-clock-o"></i> 12.10.2015
+                                </div>
+                            </li>
+                            <li class="success-element" id="task4">
+                                <h4>Erro na tela pessoa</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2130</a>
+                                    <i class="fa fa-clock-o"></i> 05.04.2015
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>Homolocação</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                        <ul class="sortable-list connectList agile-list" id="completed">
+                            <li class="info-element" id="task5">
+                                <h4>Criação de relatório.</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2030</a>
+                                    <i class="fa fa-clock-o"></i> 12.10.2015
+                                </div>
+                            </li>
+                            <li class="danger-element" id="task6">
+                                <h4>Erro na tela pessoa</h4>
+                                <div class="agile-detail">
+                                    <a href="#" class="float-right btn btn-xs btn-white">SS 2130</a>
+                                    <i class="fa fa-clock-o"></i> 05.04.2015
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>Pendente</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                        <ul class="sortable-list connectList agile-list" id="Pendente">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                @*<h4>
+                        Serialised Output
+                    </h4>
+                    <p>
+                        Serializes the sortable's item id's into an array of string.
+                    </p>*@
+
+                <div class="output p-m m white-bg"></div>
+
+
+            </div>
+        </div>
+
+
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-xl" style="max-width: 1000px">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">#SS 2030 - Criação de um Relatório</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <!-- Formulario-->
+                            <div class="col-md-9">
+                                <div id="div_descricao">
+                                    <h3><i class="fa fa-stack-exchange"></i> Título</h3>
+                                    <input type="text" class="form-control" id="Edit_titulo" placeholder="Descreva o título da SS"  />
+                                    <p></p>
+
+                                    <h3><i class="fa fa-stack-exchange"></i> Descrição</h3>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Descreva de forma detalhada" rows="12" style="height: 100px;"></textarea>
+                                    <p></p>
+                                    <button data-toggle="button" class="btn btn-primary btn-outline" type="button"><i class="fa fa-save"></i>  Salvar </button>
+                                    <br />
+                                    <br />
+                                </div>
+
+                                <br />
+                                <div id="div_chk">
+                                    <h3><i class="fa fa-check-square-o"></i>  Checklist <small class="float-right"> <button type="button" class="btn btn-primary btn-xs btn-outline">Excluir</button> </small></h3>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 33%;" class="progress-bar progress-bar-warning"></div>
+
+                                    </div>
+                                    <div class="small">Completion with: 33%</div>
+                                    <p></p>
+                                    <div><input type="checkbox" value="option3" id="inlineCheckbox3" class="form-group"> Elaboração do arquivo .rpt  <small class="float-right"><i class="fa fa-trash" style="cursor:pointer"></i> </small></div>
+                                    <div><input type="checkbox" value="option3" id="inlineCheckbox3" class="form-group"> Criação da stored procedure  <small class="float-right"><i class="fa fa-trash" style="cursor:pointer"></i> </small></div>
+                                    <div><input type="checkbox" value="option3" id="inlineCheckbox3" class="form-group"> Publicação no ambiente de homologação  <small class="float-right"><i class="fa fa-trash" style="cursor:pointer"></i> </small></div>
+                                    <button type="button" class="btn btn-primary btn-xs btn-outline" id="btn_add_item">+ Adicionar um item</button>
+                                    <br />
+                                    <br />
+                                </div>
+
+                                <br />
+                                <div id="div_atividade">
+                                    <h3><i class="fa fa-edit"></i>Atividades</h3>
+                                    <input type="text" placeholder="Descreva suas atividade" class="form-control">
+                                    <br />
+                                    <h5>Histórico Atividades</h5>
+                                    <div class="ibox-content">
+
+                                        <div>
+                                            <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                    <a href="/AppViews/Profile" class="float-left">
+                                                        <img alt="image" class="rounded-circle" src="/Images/reinaldo.jpg">
+                                                    </a>
+                                                    <div class="media-body ">
+                                                        @*<small class="float-right"><i class="fa fa-save"> </i> </small>*@
+                                                        <strong>Reinaldo Cordeiro</strong> Anexando arquivos novo <br>
+                                                        <small class="text-muted">7:60 am - 12.06.2020</small>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="feed-element">
+                                                    <a href="/AppViews/Profile" class="float-left">
+                                                        <img alt="image" class="rounded-circle" src="/Images/reinaldo.jpg">
+                                                    </a>
+                                                    <div class="media-body ">
+                                                        @*<small class="float-right"><i class="fa fa-save"> </i> </small>*@
+                                                        <strong>Reinaldo Cordeiro</strong> Alteração no tipo do campo na tabela. <br>
+                                                        <small class="text-muted">3 dias 7:58 am - 10.06.2020</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-primary btn-block m-t"><i class="fa fa-arrow-down"></i> Show More</button>
+
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Menu-->
+                            <div class="col-md-3">
+                                <h4><i class="fa fa-plus-square"></i> Adicionar a Tarefa</h4>
+                                @*<button data-toggle="button" class="btn btn-primary btn-outline btn-block" type="button"><i class="fa fa-user"> </i>  Usuario </button>*@
+                                <div class="btn-group col-md-12 m-0 p-0">
+                                    <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-user"> </i>  Usuario </button>
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference" style="min-width:211px">
+                                        <br />
+                                        <a class="dropdown-item" href="#">      <img alt="image" class="rounded-circle" src="/Images/reinaldo.jpg" style="width:20%; height:20%"> Reinaldo Cordeiro </a>
+                                        <a class="dropdown-item" href="#">      <img alt="image" class="rounded-circle" src="/Images/a5.jpg" style="width:20%; height:20%"> Sandra </a>
+                                        <a class="dropdown-item" href="#">      <img alt="image" class="rounded-circle" src="/Images/a1.jpg" style="width:20%; height:20%"> Roberto Souza </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#"> Localizar usuário</a>
+                                        <br />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <button data-toggle="button" class="btn btn-primary  btn-block" type="button"><i class="fa fa-check"> </i>  Checklist </button>
+                                <br />
+
+                                <button data-toggle="button" class="btn btn-primary  btn-block" type="button"><i class="fa fa-paperclip"> </i>  Anexo </button>
+                                <br />
+
+                                <h4><i class="fa fa-clock-o"></i> Prazo</h4>
+                                <div class="input-group date">
+                                    <input class="btn btn-success  btn-block" type="date" value="" id="example-date-input">
+                                </div>
+
+
+
+
+
+                                <br />
+                                <br />
+                                <h4><i class="fa fa-flash"></i>Ações</h4>
+                                @*<button data-toggle="button" class="btn btn-primary  btn-block" type="button"><i class="fa fa-arrow-right"> </i>  Mover </button>*@
+                                <div class="btn-group col-md-12 m-0 p-0">
+                                    <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-arrow-right"> </i>  Mover </button>
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference" style="min-width:211px">
+                                        <br />
+                                        <a class="dropdown-item" href="#"> <strong>PROJETO </strong></a>
+                                        <a class="dropdown-item" href="#"> <strong>DESENVOLVIMENTO </strong> </a>
+                                        <a class="dropdown-item" href="#"> <strong>HOMOLOGAÇÃO </strong> </a>
+                                        <a class="dropdown-item" href="#"> <strong>PENDENTE </strong> </a>
+                                        <div class="dropdown-divider"></div>
+                                        <br />
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <button data-toggle="button" class="btn btn-primary  btn-block" type="button"><i class="fa fa-archive"> </i> Arquivar  </button>
+
+                                <br />
+                                <br />
+                                <h4><i class="fa fa-user-circle"></i> Participantes</h4>
+                                <dl class="row mb-0">
+                                    <div class="col-sm-8 text-sm-left">
+                                        <dd class="project-people mb-1">
+                                            <a href=""><img alt="image" class="rounded-circle" src="~/Images/reinaldo.jpg"></a>
+                                            <a href=""><img alt="image" class="rounded-circle" src="~/Images/a1.jpg"></a>
+                                            <a href=""><img alt="image" class="rounded-circle" src="~/Images/a2.jpg"></a>
+                                        </dd>
+                                    </div>
+                                </dl>
+
+
+
+                                <br />
+                                <br />
+                                <h4><i class="fa fa-clipboard"></i> Anexo</h4>
+                                <ul class="list-unstyled project-files">
+                                    <li><a href=""><i class="fa fa-file"></i> Ficha 0201/2020.docx</a> <i class="fa fa-circle text-warning"></i></li>
+                                    <li><a href=""><i class="fa fa-file"></i> Ficha 0202/2020.docx</a></li>
+                                    <li><a href=""><i class="fa fa-file"></i> Ficha 0203/2020.docx</a></li>
+                                    <li><a href=""><i class="fa fa-file"></i> Ficha 0204/2020.docx</a></li>
+                                </ul>
+                            </div>
+                        
+
+                        </div>
+
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair <i class="fa fa-sign-out"> </i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/touchPunch")
+    @Scripts.Render("~/plugins/typehead")
+
+
+
+
+
+    <script type="text/javascript">
+
+
+        $('.typeahead_1').typeahead({
+            source: ["Renaldo Cordeirox", "Carla Silva", "João Ladrão"]
+        });
+
+
+
+        $(document).ready(function () {
+
+            //var questoes = Array();
+            //$(".sortable-list").each(function () {
+            //    var alternativas = {}
+
+            //    $(this).find('input').each(function () {
+            //        alternativas[$(this).attr('data-chave')] = $(this).val();
+            //    });
+            //    questoes.push(alternativas);
+            //    alert(alternativas.);
+
+            //});
+
+            //var questoes = Array();
+            //$.each($(".sortable-list"), function () {
+            //    alert(this.id);
+            //    questoes=[this.id]
+            //    alert(questoes)
+
+            //});
+            //alert(questoes)
+
+            //alert(final)
+
+            $("#todo, #inprogress, #completed, #Pendente").sortable({
+                connectWith: ".connectList",
+                update: function (event, ui) {
+
+                    var todo = $("#todo").sortable("toArray");
+                    var inprogress = $("#inprogress").sortable("toArray");
+                    var completed = $("#completed").sortable("toArray");
+                    var Pendente = $("#Pendente").sortable("toArray");
+                    $('.output').html("Tarefas: " + window.JSON.stringify(todo) + "<br/>" +
+                        "Em Desenvolvimento: " + window.JSON.stringify(inprogress) + "<br/>" +
+                        "Homologação: " + window.JSON.stringify(completed) + "<br/>" +
+                        "Pendente: " + window.JSON.stringify(Pendente));
+                }
+            }).disableSelection();
+
+
+            $("#btn_add_tarefa").click(function () {
+                abreModal();
+            });
+
+            //abrir model
+            $("form").on("click", "#task1", function () {
+                abreModal();
+            });
+
+
+            function abreModal() {
+                $("#myModal").modal({
+                    show: true
+                });
+            }
+
+        });
+    </script>
+}
+

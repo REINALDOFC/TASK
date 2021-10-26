@@ -1,0 +1,273 @@
+﻿@model Inspinia_MVC5.Models.TarefaViewModel
+<div class="form-group">
+    <div class="row">
+        <!-- Formulario-->
+        <div class="col-md-10">
+            <br />
+
+
+            @using (Html.BeginForm("SalvarTarefa", "Demandas", FormMethod.Post, new { id = "formTarefa" }))
+            {
+                <div id="div_ntarefa" class="h5">Numero da Solicitação: @Html.DisplayFor(model => model.Demandas_M.Tar_NSolicitacao, new { htmlAttributes = new { @class = "form-control", name = "Tar_NSolicitacao", id = "Tar_NSolicitacao" } })</div>
+
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.Demandas_M.Tar_Titulo, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Demandas_M.Tar_Titulo, new { htmlAttributes = new { @class = "form-control", required = true, name = "Tar_Titulo", id = "Tar_Titulo" } })
+
+                <p></p>
+                @Html.LabelFor(model => model.Demandas_M.Tar_Descricao, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Demandas_M.Tar_Descricao, new { @class = "form-control", name = "Tar_Descricao", @id = "Tar_Descricao", Style = "height: 250px;", required = true })
+
+                @Html.HiddenFor(model => model.Demandas_M.Tar_Nivel, htmlAttributes: new { @class = "control-label", id = "Tar_Nivel" })
+                @Html.HiddenFor(model => model.Demandas_M.Tar_NSolicitacao, htmlAttributes: new { @class = "control-label", id = "Tar_NSolicitacao" })
+
+                @Html.HiddenFor(model => model.Demandas_M.Tar_Id, htmlAttributes: new { @class = "control-label", id = "Tar_Id" })
+
+                <br />
+                <button type="button" class="btn btn-primary btn btn-outline" id="btnSalvarTarefa">Salvar</button>
+
+                <br />
+                <br />
+                <br />
+                <!--Checklist-->
+                <div id="div_chk">
+                    <div id="add_checkbox">
+                        @{
+                            foreach (var item in ViewBag.checkList)
+                            {
+                                <h3><i class="fa fa-check-square-o"></i>@item.Check_Descricao  <small class="float-right"> <button type="button" class="class_checklist_del  btn btn-primary btn-xs btn-outline" id=@item.Check_id>Excluir</button> </small></h3>
+                                <div class="progress progress-mini"><div style="width: @item.Total_Checked" class="progress-bar progress-bar-warning"></div></div>
+                                <div class="small">Conclusão com: @item.Total_Checked</div><br />
+                                <input type="hidden" id="Check_id" name="Check_id" value="@item.Check_id" />
+                            }
+                        }
+                    </div>
+                </div>
+
+                <!--Checklist-->
+                <div id="div_chk_item">
+                    <div id="add_remover_checkbox">
+                        @{
+                            foreach (var item in ViewBag.checkListItem)
+                            {
+                                <div>
+                                    <input type="checkbox" value="option3" class="class_checklisitem form-group" name="@item.Check_Item_Descricao" id="@item.Check_Item_id" @item.Check_Item_ted>  @item.Check_Item_Descricao<small class="float-right"><i class="class_checklisitem_del  fa fa-trash" id=@item.Check_Item_id style="cursor:pointer"></i></small>
+                                </div>
+
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div id="div_edit_item" style="display:none">
+                    @Html.EditorFor(model => model.CheckList_M.Check_Item_Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Adicione um novo item", id = "Check_Item_Descricao", name = "Check_Item_Descricao" } })
+                    <br />
+                </div>
+
+                <div id="div_btn_add_item" style="display:none">
+                    <button type="button" class="btn btn-primary btn-xs btn-outline" id="btn_add_item">+ Adicionar um item</button>
+                    <br />
+                    <br />
+                </div>
+            }
+
+
+
+            <!--Atividades-->
+
+            <div>
+
+                <h3><i class="fa fa-edit"></i>Atividades</h3>
+                @Html.EditorFor(model => model.Atividade_M.HisAti_Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = "Descreva suas atividade", id = "HisAti_Descricao", name = "HisAti_Descricao" } })
+
+                <div class="ibox-title">
+                    <h5>
+                        Seu feed diário
+                    </h5>
+                    <div class="ibox-tools">
+                        <span class="label label-warning-light">0 Mensagem</span>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="feed-activity-list" id="div_atividade">
+
+                        @{ foreach (var item in ViewBag.ListaAtividades)
+
+                            {
+                                <div class="feed-element">
+                                    <a href="/AppViews/Profile" class="float-left"><img alt="image" class="rounded-circle" src="~/Images/@item.Usu_Foto"></a>
+                                    <div class="media-body">
+                                        <strong>@item.Usu_Nome</strong> @item.HisAti_Descricao;<br>
+                                        <small class="text-muted">@item.HisAti_Dt_cadastro </small>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                    <button class="btn btn-primary btn-block m-t"><i class="fa fa-arrow-down"></i> Mostre mais </button>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+
+
+        </div>
+        <!-- Menu-->
+
+        <div class="col-md-2" id="div_acao">
+            <br />
+            <form id="forms" name="forms" action="" method="post" enctype="multipart/form-data">
+                <h4><i class="fa fa-plus-square"></i> Adicionar a Tarefa</h4>
+                @*<button data-toggle="button" class="btn btn-primary btn-outline btn-block" type="button"><i class="fa fa-user"> </i>  Usuario </button>*@
+                <div class="btn-group col-md-12 m-0 p-0">
+                    <button type="button" class="btn btn-secondary btn-block"><i class="fa fa-user"> </i>  Usuario </button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference" style="min-width:211px" id="divListaUsuario">
+
+                        <br />
+
+                    </div>
+
+                </div>
+                <br />
+                <br />
+                <button data-toggle="button" class="btn btn-primary  btn-block" type="button" id="btnCheckList" name="btnCheckList"><i class="fa fa-check"> </i>  Checklist </button>
+                <br />
+                <input type="file" name="fileAnexo" id="fileAnexo" accept=".jpeg, .jpg, .png, .pdf, .doc .xls" style="display:none" multiple>
+                <button data-toggle="button" class="btn btn-primary  btn-block" type="button" id="btnAnexo"> <i class="fa fa-paperclip"> </i>  Anexo </button>
+                <input type="hidden" id="NumeroSS" name="NumeroSS" />
+                <br />
+
+                <h4><i class="fa fa-calendar"></i> Prazo</h4>
+                <div class="input-group date text-center">
+                    <input class="btn btn-success  btn-block" id="Tar_DTPrazo" name="Tar_DTPrazo" type="date">
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-md-8"> <h4><i class="fa fa-clock-o"></i> Tarefa urgente?</h4></div>
+                    <div class="col-md-2">
+                        <div class="switch">
+                            <div class="onoffswitch">
+
+                                <input type="checkbox" class="onoffswitch-checkbox" id="onoff1" name="onoff1">
+                                <label class="onoffswitch-label" for="onoff1">
+
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br />
+                <br />
+                <h4><i class="fa fa-flash"></i>Ações</h4>
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <button class="btn btn btn-circle" type="button" id="btn_tarefa" onclick="Movimentacao('Tarefas')">
+                            <i class="fa fa-list"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-circle" type="button" id="btn_desenvolvimento" onclick="Movimentacao('Desenvolvimento')">
+                            <i class="fa fa-bolt"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-circle" type="button" id="btn_homologacao" onclick="Movimentacao('Homologacao')">
+                            <i class="fa fa-bug"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-warning btn-circle" type="button" id="btn_pendente" onclick="Movimentacao('Pendente')">
+                            <i class="fa fa-exclamation"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-secondary btn-circle" type="button" onclick="Movimentacao('Finalizado')">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <br />
+                <!--Arquivamento-->
+                @*<button data-toggle="button" class="btn btn-secondary  btn-block" type="button" onclick="Movimentacao('Finalizado')"><i class="fa fa-archive"> </i> Arquivar  </button>*@
+
+                @*<br />
+                    <br />*@
+                <!--Participantes-->
+                <h4><i class="fa fa-user-circle"></i> Participantes</h4>
+                <dl class="row mb-0">
+                    <div class="col-sm-12 text-sm-left" id="divListaUsuarioTarefa">
+
+                    </div>
+                </dl>
+
+                <br />
+
+                <!--Anexo-->
+                <div id="div_anexo_tarefa">
+                    <h4><i class="fa fa-clipboard"></i> Anexo</h4>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/touchPunch")
+    @Scripts.Render("~/plugins/typehead")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/plugins/summernote")
+    @*@Scripts.Render("~/bundles/jqueryval");*@
+    @*<script src="~/Scripts/Rotina_Basica.js"></script>*@
+
+    <script type="text/javascript">
+
+
+   
+    @*$("form").on("click", "#btnCheckList", function () {
+
+        var check_Tar_id = $('#Tar_Id').val();
+        var check_Descricao = $('#check_Descricao').val();
+        Modulo = { Check_Tar_id: check_Tar_id, Check_Descricao: "Checklista" };
+        Func_Crud('@Url.Action("AddCheckList", "Demandas")', Modulo = { Check_Tar_id: check_Tar_id, Check_Descricao: "Checklista" });
+        Casdastro_load();
+
+        $("#div_btn_add_item").css("display", "block");
+        $("#div_edit_item").css("display", "block");
+        $('#Check_Item_Descricao').focus();
+
+
+    })
+
+    //Click do Botão ADD ITEM Checklist
+    $("#btn_add_item").click(function () {
+        $("#div_edit_item").css("display", "block");
+        $('#Check_Item_Descricao').focus();
+    })*@
+
+
+
+
+
+
+    </script>
+}

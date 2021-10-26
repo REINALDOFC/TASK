@@ -1,0 +1,10 @@
+﻿
+@{
+    foreach (var item in ViewBag.anexo)
+    {   <ul class="list-unstyled project-files" id="ul_anexo">
+        <li><a href="~/Anexo/@item.Ane_Nome_Completo" target="_blank"><i class="fa fa-file"></i> @item.Ane_Nome</a><small class="float-right"><i class="class_anexo_del  fa fa-trash" id=@item.Ane_id style="cursor:pointer"></i></small></li>
+        </ul>
+    }
+}
+
+

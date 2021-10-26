@@ -1,0 +1,207 @@
+﻿<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+
+                    <h3>Tarefas</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                    <div class="ibox-tools">
+                        @*<span class="label label-warning-light">10 Mensagen</span>*@
+                    </div>
+                    <ul class="sortable-list connectList agile-list" id="todo">
+
+                        @{ foreach (var item in (List<Inspinia_MVC5.Models.Demandas_Model>)ViewBag.ListaDemandas)
+
+                            {
+                                if (@item.Tar_Status.ToString() == "1")
+                                {
+                                    <li class="titulo @item.Tar_Nivel.ToString()" id="@item.Tar_NSolicitacao.ToString()">
+                                        <h4>@item.Tar_Titulo.ToString()</h4>
+                                        <div class="agile-detail" id="@item.Tar_NSolicitacao.ToString()">
+
+                                            <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao" class="float-right btn btn-xs btn-white">@item.Tar_NSolicitacao.ToString()</a>
+                                           
+                                            @{ <i class="fa fa-user-o"></i>
+                                                if (@item.Tar_DTPrazo.ToString() != "")
+                                                {
+                                                    if (@item.Vencimento.ToString() == "EXPIRADO!")
+                                                    {
+                                                        <strong style="color:#f28b8b"> <i class="fa fa-clock-o" style="padding-left:10px "></i> @item.Tar_DTPrazo.ToString()</strong>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="fa fa-clock-o" style="padding-left:10px"></i> @item.Tar_DTPrazo.ToString()
+                                                    }
+                                                }
+
+                                                if (@item.CheckList_total.ToString() != "0")
+                                                {
+                                                    <i class="fa fa-check-square-o" style="padding-left:10px"></i> @item.CheckList_total.ToString()
+                                                }
+                                                if (@item.Anexo.ToString() != "0")
+                                                {
+                                                    <i class="fa fa-paperclip" style="padding-left:10px"></i>
+                                                }
+                                                if (@item.Atividade.ToString() != "0")
+                                                {
+                                                    <i class="fa fa-comment-o" style="padding-left:10px"></i>
+                                                }
+                                                
+                                            }
+
+
+                                        </div>
+                                       
+                                    </li>
+
+                                }
+
+                            }
+
+                        }
+
+                    </ul>
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="btn_add_tarefa" role="button"> + Criar um nova tarefa</button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Em Desenvolvimento</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                    <div class="ibox-tools">
+                        @*<span class="label label-warning-light">10 Mensagen</span>*@
+                    </div>
+                    <ul class="sortable-list connectList agile-list" id="inprogress">
+                        @{ foreach (var item in (List<Inspinia_MVC5.Models.Demandas_Model>)ViewBag.ListaDemandas)
+
+                            {
+                                if (@item.Tar_Status.ToString() == "2")
+                                {
+                                    <li class="titulo @item.Tar_Nivel.ToString()" id="@item.Tar_NSolicitacao.ToString()">
+                                        <h4>@item.Tar_Titulo.ToString()</h4>
+                                        <div class="agile-detail">
+                                            <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao" class="float-right btn btn-xs btn-white">@item.Tar_NSolicitacao.ToString()</a>
+                                            @{
+                                                <i class="fa fa-user"></i>
+                                                if (@item.Tar_DTPrazo.ToString() != "")
+                                                {
+                                                    <i class="fa fa-clock-o" style="padding-left:10px"></i> @item.Tar_DTPrazo.ToString()
+                                                }
+                                                if (@item.CheckList_total.ToString() != "0")
+                                                {
+                                                    <i class="fa fa-check-square" style="padding-left:10px"></i> @item.CheckList_total.ToString()
+                                                }
+                                            }
+                                        </div>
+                                    </li>
+                                }
+
+                            } 
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Homologação</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                    <ul class="sortable-list connectList agile-list" id="completed">
+                        @{ foreach (var item in (List<Inspinia_MVC5.Models.Demandas_Model>)ViewBag.ListaDemandas)
+
+                            {
+                                if (@item.Tar_Status.ToString() == "3")
+                                {
+                                    <li class="titulo @item.Tar_Nivel.ToString()" id="@item.Tar_NSolicitacao.ToString()">
+                                        <h4>@item.Tar_Titulo.ToString()</h4>
+                                        <div class="agile-detail">
+                                            <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao" class="float-right btn btn-xs btn-white" style="padding-left:10px">@item.Tar_NSolicitacao.ToString()</a>
+                                            @{
+                                                <i class="fa fa-user" style="padding-left:10px"></i>
+                                                if (@item.Tar_DTPrazo.ToString() != "")
+                                                {
+                                                    if (@item.Tar_DTPrazo.ToString() != "EXPIRADO!")
+                                                    {
+                                                        <i class="fa fa-clock-o" style="padding-left:10px"></i> @item.Tar_DTPrazo.ToString()
+                                                    }
+                                                    else
+                                                    {
+                                                        <i class="fa fa-clock-o" style="padding-left:10px"></i> @item.Tar_DTPrazo.ToString()
+                                                    }
+
+                                                }
+                                                if (@item.CheckList_total.ToString() != "0")
+                                                {
+
+                                                    <i class="fa fa-check-square" style="padding-left:10px"></i> @item.CheckList_total.ToString()
+
+                                                }
+
+                                            }
+                                        </div>
+                                    </li>
+                                }
+
+                            } }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Pendente</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Arraste a tarefa entre a lista</p>
+                    <ul class="sortable-list connectList agile-list" id="Pendente">
+                        @{ foreach (var item in (List<Inspinia_MVC5.Models.Demandas_Model>)ViewBag.ListaDemandas)
+
+                            {
+                                if (@item.Tar_Status.ToString() == "4")
+                                {
+                                    <li class="titulo @item.Tar_Nivel.ToString()" id="@item.Tar_NSolicitacao.ToString()">
+                                        <h4>@item.Tar_Titulo.ToString()</h4>
+                                        <div class="agile-detail">
+                                            <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao" class="float-right btn btn-xs btn-white" style="padding-left:10px">@item.Tar_NSolicitacao.ToString()</a>
+                                            @{
+                                                <i class="fa fa-user"></i>
+                                                if (@item.Tar_DTPrazo.ToString() != "")
+                                                {
+                                                    <i class="fa fa-clock-o" style="padding-left:10px"></i> @item.Tar_DTPrazo.ToString()
+                                                }
+                                                if (@item.CheckList_total.ToString() != "0")
+                                                {
+                                                    <i class="fa fa-check-square" style="padding-left:10px"></i> @item.CheckList_total.ToString()
+                                                }
+
+
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+
+</script>

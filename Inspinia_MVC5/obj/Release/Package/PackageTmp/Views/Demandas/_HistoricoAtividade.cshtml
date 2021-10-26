@@ -1,0 +1,37 @@
+﻿@model Inspinia_MVC5.Models.TarefaViewModel
+<div class="ibox-title">
+    <h5>
+        Seu feed diário
+    </h5>
+    <div class="ibox-tools">
+        <span class="label label-warning-light">@ViewBag.TotalMesagem Mensagen(s)</span>
+    </div>
+</div>
+<div>
+
+
+    <div class="ibox-content">
+
+        <div class="feed-activity-list" id="div_atividade">
+
+            @{ foreach (var item in ViewBag.ListaAtividades)
+
+                {
+                    <div class="feed-element">
+                        <a href="@Url.Action("demandas_usuario", "demandas")?id=@item.Usu_Nome" class="float-left"><img alt="image" class="rounded-circle" src="~/Images/@item.Usu_Foto"></a>
+                        <div class="media-body">
+                            <strong>@item.Usu_Nome</strong> @item.HisAti_Descricao<br>
+                            <small class="text-muted">@item.HisAti_Dt_cadastro </small>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+        <button class="btn btn-primary btn-block m-t"><i class="fa fa-arrow-down"></i> Mostre mais </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</div>

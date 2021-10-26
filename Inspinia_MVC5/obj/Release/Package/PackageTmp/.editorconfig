@@ -1,0 +1,7 @@
+﻿[*.{cs,vb}]
+
+# IDE0060: Remover o parâmetro não utilizado
+dotnet_code_quality_unused_parameters = non_public:suggestion
+
+# CS0472: O resultado da expressão é sempre o mesmo, pois um valor deste tipo nunca é 'null' 
+dotnet_diagnostic.CS0472.severity = none

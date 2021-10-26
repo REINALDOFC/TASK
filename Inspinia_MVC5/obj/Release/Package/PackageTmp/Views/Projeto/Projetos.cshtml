@@ -1,0 +1,101 @@
+﻿@model Inspinia_MVC5.Models.Modulo_Model
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <br />
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="">Painel</a>
+            </li>
+            <li class="Ativo breadcrumb-item">
+                <strong>Projetos</strong>
+            </li>
+        </ol>
+    </div>-
+</div>
+<div class="wrapper wrapper-content animated fadeInUp">
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h4>Todos os projetos atribuídos a esta conta</h4>
+            <div class="ibox-tools">
+                <!--<a href="" class="btn btn-primary btn-sm"--> @*data-toggle="modal" data-target="#exampleModal"*@ <!--id="btn_add_Projeto">Criar novo projeto</a>-->
+                <button type="button" class="btn btn-primary btn-sm" id="btn_add_Projeto">Criar novo projeto</button>
+            </div>
+            <br />
+
+        </div>
+        <div class="ibox-content">
+            <div class="row m-b-sm m-t-sm">
+                <div class="col-md-1">
+                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" style="padding-top:9px"><i class="fa fa-refresh"></i> Atualizar</button>
+                </div>
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search" class="form-control-sm form-control" id="edit_pesquisar"> <span class="input-group-btn">
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-list" id="Div_lista_processo">
+                @Html.Partial("_ListProjetos")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODEL*@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nome do projeto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <small class="h6">Selecione o cliente</small>
+                    <div id="Div_Lista_Cliente">
+                            @Html.Partial("_ListCliente")                     
+                    </div>
+                    <div id="div_cadcliente" style="display:none">
+                        <br />
+                        <small class="h6">Digite o nome do cliente</small>
+                        <input type="text" class="edit form-control" name="edit_cliente" id="edit_cliente">
+
+                        <br />
+                    </div>
+                    <button type="button" class="btn btn" id="btn_add_cliente">Add novo cliente</button>
+                    <br />
+                    <br />
+                    <hr />
+
+                    <small class="h6">Digite o nome do modulo</small>
+                    <input type="text" class="edit form-control" name="edit_Modulo" id="edit_Modulo">
+
+
+                    <br />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="bnt_salvarProjeto" onclick="salvar_projeto()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/Scripts/tasks/projetos.js"></script>
+
+
+<script>
+
+
+
+
+</script>
+

@@ -1,0 +1,20 @@
+﻿ <!--Checklist-->
+<div id="div_chk">
+    <div id="add_checkbox">
+        @{
+            foreach (var item in ViewBag.checkList)
+            {
+                <h3>
+                    <i class="fa fa-check-square-o"></i>@item.Check_Descricao
+                    <small class="float-right">
+                        <button type="button" class="class_checklist_del  btn btn-primary btn-xs btn-outline" id=@item.Check_id>Excluir</button>
+                    </small>
+                </h3>
+                <div class="progress progress-mini"><div style="width: @item.Total_Checked" class="progress-bar progress-bar-warning"></div></div>
+                <div class="small">Conclusão com: @item.Total_Checked</div><br />
+                <input type="hidden" id="Check_id" name="Check_id" value="@item.Check_id" />
+                <input type="hidden" id="Total_Checked" name="Check_id" value="@item.Total_Checked" />
+            }
+        }
+    </div>
+</div>

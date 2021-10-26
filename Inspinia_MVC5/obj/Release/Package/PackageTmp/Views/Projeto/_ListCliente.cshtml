@@ -1,0 +1,6 @@
+﻿<select class="form-control m-b" name="combo_list_cliente" id="combo_list_cliente">
+    @foreach (var item in ViewBag.clientelista)
+        {
+            <option value=@item.Cli_id>@item.Cli_Descricao</option>
+        }
+</select>

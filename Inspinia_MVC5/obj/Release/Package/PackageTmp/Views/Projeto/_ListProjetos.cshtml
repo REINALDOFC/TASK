@@ -1,0 +1,28 @@
+﻿
+<table class="table table-hover">
+    <tbody>
+        @{ foreach (var item in (List<Inspinia_MVC5.Models.Modulo_Model>)ViewBag.ListaModulos)
+            {
+                <tr>
+
+                    <td class="project-title">
+                        <a href="@Url.Action("projeto_detalhe", "projeto")?Id=@item.Mod_id">@item.Mod_Descricao.ToString()</a>
+                        <br>
+                        <small>Criado @item.Mod_dt_criacao.ToString()</small>
+                    </td>
+                    <td class="project-completion" style="width:800px">
+                        <small>
+                            Conclusão com:  @item.Total_Checked.ToString()
+                        </small>
+                        <div class="progress progress-mini">
+                            <div style="width: @item.Total_Checked.ToString();" class="progress-bar"></div>
+                        </div>
+                    </td>
+                    <td class="project-actions">
+                        <a href="@Url.Action("projeto_detalhe", "projeto")?Id=@item.Mod_id" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> Visualizar </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,259 @@
+﻿@model Inspinia_MVC5.Models.TarefaViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function UsuarioParticipante_load(id) {
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ id: id}),
+        url: '@Url.Action("Usuario_participanteparcial", "Projeto")',
+
+        success: function (result) {
+            $('#td_UsuarioParticipante').html(result);
+
+        }
+    });
+    }
+
+
+</script>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Detalhe do Projeto</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")">Painel</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Detalhe do Projeto</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-lg-10">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="m-b-md">
+                                <a href="@Url.Action("cadastrartarefas", "Demandas", new {id="0", Mod_id=@Model.Modulo_M.Mod_id})" class="btn btn-primary btn-lg float-right"> +  Criar nova tarefa</a>
+                                <h2>@Model.Modulo_M.Mod_Descricao</h2>
+                            </div>
+                            <div class="m-b-md">
+                                <div class="tooltip-demo">
+                                    <a href="@Url.Action("Demandas", "Demandas", new {id=@Model.Modulo_M.Mod_id, nome=@Model.Modulo_M.Mod_Descricao})" class="btn btn-default float-right"  data-toggle="tooltip" data-placement="left" title="" data-original-title="Exibir em formato de colunas"><i class="fa fa-th-large"></i> </a>
+                                </div>
+                            </div>
+
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right"><dt>Status:</dt> </div>
+                                <div class="col-sm-8 text-sm-left"><dd class="mb-1"><span class="label label-primary">Ativo</span></dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right"><dt>Craiado por:</dt> </div>
+                                <div class="col-sm-8 text-sm-left"><dd class="mb-1">@Model.Modulo_M.Mod_Criador</dd> </div>
+                            </dl>
+                            @*<dl class="row mb-0">
+                                    <div class="col-sm-4 text-sm-right"><dt>Mensagem:</dt> </div>
+                                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  162</dd></div>
+                                </dl>*@
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right"><dt>Cliente:</dt> </div>
+                                <div class="col-sm-8 text-sm-left"> <dd class="mb-1"><a href="#" class="text-navy">@Model.Modulo_M.Mod_Cliente</a> </dd></div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right"> <dt>Versão:</dt></div>
+                                <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> @Model.Modulo_M.Mod_Versao </dd></div>
+                            </dl>
+
+                        </div>
+                        <div class="col-lg-6" id="cluster_info">
+
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right">
+                                    <dt>Ultima Atualização:</dt>
+                                </div>
+                                <div class="col-sm-8 text-sm-left">
+                                    <dd class="mb-1">16.08.2014 12:15:57</dd>
+                                </div>
+                            </dl>
+                            <dl class="row mb-0">
+                                <div class="col-sm-4 text-sm-right">
+                                    <dt>Criado:</dt>
+                                </div>
+                                <div class="col-sm-8 text-sm-left">
+                                    <dd class="mb-1"> @Model.Modulo_M.Mod_dt_criacao</dd>
+                                </div>
+                            </dl>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <dl class="row mb-0">
+                                <div class="col-sm-2 text-sm-right">
+                                    <dt>completado:</dt>
+                                </div>
+                                <div class="col-sm-10 text-sm-left">
+                                    <dd>
+                                        <div class="progress m-b-1">
+                                            <div style="width: @Model.Modulo_M.Total_Checked;" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                                        </div>
+                                        <small>Tarefas concluído em <strong>@Model.Modulo_M.Total_Checked</strong> </small>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row m-t-sm">
+                        <div class="col-lg-12">
+                            <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li><a class="nav-link active" href="#tab-1" data-toggle="tab">Ultima atividade</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab-1">
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ficha</th>
+                                                        <th>Status</th>
+                                                        <th>Título</th>
+                                                        <th>Começo</th>
+                                                        <th>Fim</th>
+                                                        <th>Checklist</th>
+                                                        <th>Participantes</th>
+                                                        <th>Ultimo comentário</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+
+                                                    @{ foreach (var item in ViewBag.ListaTarefas)
+
+                                                        {
+                                                            
+                                                            <tr>
+
+
+                                                                <td>
+                                                                    <a href=" @Url.Action("cadastrartarefas", "demandas")?Id=@item.Tar_NSolicitacao&Mod_id=@Model.Modulo_M.Mod_id" class="btn btn-xs btn-white">@item.Tar_NSolicitacao.ToString()</a>
+
+                                                                </td>
+                                                                <td>
+                                                                    @{
+                                                                        if (item.Sta_Descricao == "Tarefas")
+                                                                        {
+                                                                            <span class="label label-inverse btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                                                                        }
+                                                                        else if (item.Sta_Descricao == "Desenvolvimento")
+                                                                        {
+                                                                            <span class="label label-primary btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                                                                        }
+                                                                        else if (item.Sta_Descricao == "Homologação")
+                                                                        {
+                                                                            <span class="label label-info btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                                                                        }
+                                                                        else if (item.Sta_Descricao == "Pendente")
+                                                                        {
+                                                                            <span class="label label-warning btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                                                                        }
+                                                                        else if (item.Sta_Descricao == "Finalizado")
+                                                                        {
+                                                                            <span class="label label-danger btn-block"><i class="fa fa-check"></i>  @item.Sta_Descricao</span>
+                                                                        }
+
+
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @item.Tar_Titulo
+                                                                </td>
+                                                                <td>
+                                                                    @item.Tar_DTCadastro
+                                                                </td>
+                                                                <td>
+                                                                    @item.Tar_DTPrazo
+                                                                </td>
+                                                                <td>
+                                                                    @item.CheckList_total
+                                                                </td>
+                                                                
+                                                                <td>                                                              
+                                                                    @{Html.RenderAction("_Usuario_participante", "Projeto", new { id = @item.Tar_Id });}
+                                                                </td>
+                                                                <td>
+                                                                    <p class="small">
+                                                                        @item.UltimoComentario
+                                                                    </p>
+                                                                </td>
+
+                                                            </tr>
+
+                                                        }
+                                                    }
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="wrapper wrapper-content project-manager">
+            <h4>Descricao Projeto</h4>
+            @*<img src="~/Images/zender_logo.png" class="img-fluid">*@
+            <p class="small">
+                SIP - Sistem de Infração e Penalidade de Transito
+            </p>
+            <p class="small font-bold">
+                <span><i class="fa fa-circle text-warning"></i> Anexo novo ou alterado</span>
+            </p>
+
+            <h5>Anexos</h5>
+            <ul class="list-unstyled project-files">
+                @*<li><a href=""><i class="fa fa-file"></i> Ficha 0201/2020.docx</a> <i class="fa fa-circle text-warning"></i></li>*@
+                @{ foreach (var item in ViewBag.ListaAnexo)
+
+                    {
+                        <li><a href="~/Anexo/@item.Ane_Nome_Completo" target="_blank"><i class="fa fa-file"></i> @item.Ane_Nome_Completo</a> @*<i class="fa fa-circle text-warning"></i>*@</li>
+                    }
+                }
+            </ul>
+            @*<div class="text-center m-t-md">
+                    <a href="#" class="btn btn-xs btn-primary">Adicionar Arquivo</a>
+                    <a href="#" class="btn btn-xs btn-primary">Reportar</a>
+                </div>*@
+        </div>
+    </div>
+</div>
